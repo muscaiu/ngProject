@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import {RouterLink} from'angular2/router'
+import {RouterLink, Router} from'angular2/router'
 
 
 @Component({
@@ -9,5 +9,10 @@ import {RouterLink} from'angular2/router'
 })
 
 export class NavbarComponent {
-    
+    constructor(private _router:Router){        
+    }
+    isCurrentRoute(route){
+        var instruction = this._router.generate(route);
+        return this._router.isRouteActive(instruction); 
+    }
 }

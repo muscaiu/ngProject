@@ -1,11 +1,11 @@
 import { Component } from 'angular2/core';
 
 @Component({
-    selector: 'project',
+    selector: 'posts',
     template: `
-        <h2>Project</h2>
+        <h2>Posts</h2>
     `
 })
-export class ProjectComponent {
+export class PostsComponent {
     
 }
