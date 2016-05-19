@@ -2,9 +2,9 @@ import { Component } from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from'angular2/router'
 
 import {NavbarComponent} from './navbar.component'
-import {HomeComponent} from './home.component'
-import {UsersComponent} from './users.component'
-import {PostsComponent} from './posts.component'
+import {HomeComponent} from './Home/home.component'
+import {UsersComponent} from './Users/users.component'
+import {PostsComponent} from './Posts/posts.component'
 
 @RouteConfig([
     {path: '/', name: 'Home', component: HomeComponent},

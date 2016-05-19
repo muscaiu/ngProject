@@ -3,7 +3,7 @@ import {UserService} from './user.service';
 
 @Component({
     selector:'users',
-    templateUrl: 'dev/users.component.html',
+    templateUrl: 'dev/Users/users.component.html',
     providers:[UserService]
 })
 
@@ -21,6 +21,5 @@ export class UsersComponent implements OnInit{
                 this.users = x;
                 this.isLoading = false;
             });    
-    }
-    
+    }    
 }

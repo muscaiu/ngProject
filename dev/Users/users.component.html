@@ -1,4 +1,5 @@
 <h2>Users</h2>
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -12,12 +13,16 @@
         <tr *ngFor="#user of users">
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td></td>
-            <td></td>
+            <td class="glyphicon text-center glyphicon-edit"></td>
+            <td class="glyphicon text-center glyphicon-remove"></td>            
         </tr>
     </tbody>
 </table>
-<div class="container">
+<div class="container" 
+     style="position: relative;
+            z-index: 999;
+            width: 2em;
+            margin: auto;">
     <i *ngIf="isLoading" 
         class="fa fa-spinner fa-spin fa-3x">
     </i>   
