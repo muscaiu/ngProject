@@ -13,6 +13,7 @@ export class NavbarComponent {
     }
     isCurrentRoute(route){
         var instruction = this._router.generate(route);
+        
         return this._router.isRouteActive(instruction); 
     }
 }
