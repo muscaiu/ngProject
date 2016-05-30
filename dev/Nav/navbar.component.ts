@@ -4,7 +4,7 @@ import {RouterLink, Router} from'angular2/router'
 
 @Component({
     selector: 'navbar',
-    templateUrl: 'dev/navbar.component.html'    
+    templateUrl: 'dev/Nav/navbar.component.html'    
     ,directives: [RouterLink] 
 })
 

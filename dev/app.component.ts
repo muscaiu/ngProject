@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from'angular2/router'
 
-import {NavbarComponent} from './navbar.component'
+import {NavbarComponent} from './Nav/navbar.component'
 import {HomeComponent} from './Home/home.component'
 import {UsersComponent} from './Users/users.component'
 import {PostsComponent} from './Posts/posts.component'
@@ -24,9 +24,9 @@ import {UserFormComponent} from './Users/user-form.component'
     </div>
     ` ,
     directives: [NavbarComponent,
-                 HomeComponent,
-                 UsersComponent,
-                 PostsComponent,
+                //  HomeComponent,
+                //  UsersComponent,
+                //  PostsComponent,
                  ROUTER_DIRECTIVES]
 })
 export class AppComponent {

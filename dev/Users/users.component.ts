@@ -12,7 +12,7 @@ import {UserService} from './user.service';
 
 export class UsersComponent implements OnInit{
     isLoading = true;
-    users = [];
+    users : any;
     
     constructor(private _userService:UserService){
         
