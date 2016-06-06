@@ -3,19 +3,24 @@ import {Injectable} from 'angular2/core';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UserService{
-    private _url = "http://jsonplaceholder.typicode.com/users";
-    
-    constructor(private _http:Http){}
-    
-    getUsers(){
-        return this._http.get(this._url)
-            .map(x => x.json());
-    }
-        
-    addUser(user){
-        return this._http.post(this._url, JSON.stringify(user))
-                .map(res => res.json());
-    }
+export class UserService {
+	private _url = "http://jsonplaceholder.typicode.com/users";
 
+	constructor(private _http: Http){
+	}
+
+	getUsers(){
+		return this._http.get(this._url)
+			.map(res => res.json());
+	}
+    
+    getUser(userId){
+		return this._http.get(this._url + "/" + userId)
+			.map(res => res.json());
+	}
+    
+    addUser(user){
+		return this._http.post(this._url, JSON.stringify(user))
+			.map(res => res.json());
+	}
 }
