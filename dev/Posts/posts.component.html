@@ -12,7 +12,10 @@
             z-index: 999;
             width: 2em;
             margin: auto;">
-    <i *ngIf="isLoading" 
+            
+    <spinner [visible]="isLoading"></spinner>
+    
+    <!--<i *ngIf="isLoading" 
         class="fa fa-spinner fa-spin fa-3x">
-    </i>   
+    </i>   -->
 </div>
