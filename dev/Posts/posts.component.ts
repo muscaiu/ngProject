@@ -7,11 +7,23 @@ import {SpinnerComponent} from '../CustomHtml/spinner.component';
     selector: 'posts',
     templateUrl: 'dev/Posts/posts.component.html',
     providers: [PostService] ,
-    directives: [SpinnerComponent] 
+    directives: [SpinnerComponent] , 
+    styles:[`
+        .posts li { cursor: default; }
+        .posts li:hover { background: #ecf0f1; } 
+        .list-group-item.active, 
+        .list-group-item.active:hover, 
+        .list-group-item.active:focus { 
+            background-color: #ecf0f1;
+            border-color: #ecf0f1; 
+            color: #2c3e50;
+        }
+    `],
 })
 export class PostsComponent implements OnInit {
     isLoading = true;
     posts: any;
+    currentPost;
     
     constructor(private _postService:PostService){   
     }
@@ -22,5 +34,9 @@ export class PostsComponent implements OnInit {
               this.posts = x;
               this.isLoading = false;  
             })
+    }
+    
+    select(postx){
+        this.currentPost = postx;
     }
 }
