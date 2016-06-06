@@ -1,8 +1,7 @@
 import { Component, OnInit } from 'angular2/core';
 
 import {PostService} from './post.service';
-import {SpinnerComponent} from './spinner.component';
-//import {SpinnerComponent} from 'dev/CustomHtml/spinner.component';
+import {SpinnerComponent} from '../CustomHtml/spinner.component';
 
 @Component({
     selector: 'posts',
