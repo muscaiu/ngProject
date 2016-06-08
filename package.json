@@ -1,5 +1,5 @@
 {
-  "name": "mosh",
+  "name": "cris",
   "version": "1.0.0",
   "scripts": {
     "postinstall": "npm run typings install",
