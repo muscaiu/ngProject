@@ -22,37 +22,51 @@ import {SpinnerComponent} from '../CustomHtml/spinner.component';
     directives: [SpinnerComponent] , 
 })
 export class PostsComponent implements OnInit {
-    postsLoading = true;
-    posts = [];
+	posts = [];
     users = [];
-    currentPost;
+    postsLoading;
     commentsLoading;
+    currentPost;
+    
+    constructor(
+        private _postService: PostService,
+        private _userService: UserService) {
+	}
 
-    constructor(private _postService:PostService,
-                private _userService:UserService){   
+	ngOnInit() {
+        this.loadUsers();
+        this.loadPosts();        
+	}
+    
+    private loadUsers(){
+        this._userService.getUsers()
+            .subscribe(users => this.users = users);
     }
     
-    ngOnInit(){
-        this._userService.getUsers()
-            .subscribe(users => this.users= users);
-
-        this._postService.getPosts()
-            .subscribe(x =>{
-              this.posts = x;
-              this.postsLoading = false;  
-            })
+    private loadPosts(filter?){
+        this.postsLoading = true; 
+		this._postService.getPosts(filter)
+			.subscribe(
+                posts => this.posts = posts,
+                null,
+                () => { this.postsLoading = false; });
+    }
+    
+    reloadPosts(filter){
+        this.currentPost = null;
+        
+        this.loadPosts(filter);
     }
     
     select(post){
-        this.currentPost = post;
+		this.currentPost = post; 
+        
         this.commentsLoading = true;
-
         this._postService.getComments(post.id)
-            .subscribe(comments =>
-                this.currentPost.comments = comments, 
+			.subscribe(
+                comments => 
+                    this.currentPost.comments = comments,
                 null,
-                () => this.postsLoading = false);                
-    }
-
-
+                () => this.commentsLoading = false); 
+    } 
 }

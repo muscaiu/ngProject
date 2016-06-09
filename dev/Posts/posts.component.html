@@ -1,17 +1,19 @@
 <h2>Posts</h2>
 <!--Spinner-->
-<div class="container" 
-     style="position: relative;
+<div class="container" >
+     <!--style="position: relative;
             z-index: 999;
             width: 2em;
-            margin: auto;">            
+            margin: auto;">            -->
     <spinner [visible]="postsLoading"></spinner>
 </div>
 
 <!--Left Side List of Posts-->
 <div class="col-md-6 col-sm-6">
 <!--Dropdown-->
-    <select class="form-control">
+    <select class="form-control"
+            #usr
+            (change)="reloadPosts({userId: usr.value})">
         <option value="">Select a user...</option>
         <option *ngFor="#user of users"
                  value="{{ user.id }}">
