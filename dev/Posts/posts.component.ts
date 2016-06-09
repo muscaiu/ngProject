@@ -1,6 +1,7 @@
 import { Component, OnInit } from 'angular2/core';
 
 import {PostService} from './post.service';
+import {UserService} from '../Users/user.service';
 import {SpinnerComponent} from '../CustomHtml/spinner.component';
 
 @Component({
@@ -17,19 +18,24 @@ import {SpinnerComponent} from '../CustomHtml/spinner.component';
     `],
     selector: 'posts',
     templateUrl: 'dev/Posts/posts.component.html',
-    providers: [PostService] ,
+    providers: [PostService, UserService],
     directives: [SpinnerComponent] , 
 })
 export class PostsComponent implements OnInit {
     postsLoading = true;
     posts = [];
+    users = [];
     currentPost;
     commentsLoading;
 
-    constructor(private _postService:PostService){   
+    constructor(private _postService:PostService,
+                private _userService:UserService){   
     }
     
     ngOnInit(){
+        this._userService.getUsers()
+            .subscribe(users => this.users= users);
+
         this._postService.getPosts()
             .subscribe(x =>{
               this.posts = x;
@@ -45,7 +51,7 @@ export class PostsComponent implements OnInit {
             .subscribe(comments =>
                 this.currentPost.comments = comments, 
                 null,
-                () => this.commentsLoading = false);                
+                () => this.postsLoading = false);                
     }
 
 

@@ -1,5 +1,4 @@
 <h2>Posts</h2>
-
 <!--Spinner-->
 <div class="container" 
      style="position: relative;
@@ -9,8 +8,17 @@
     <spinner [visible]="postsLoading"></spinner>
 </div>
 
-<!--Left Side-->
+<!--Left Side List of Posts-->
 <div class="col-md-6 col-sm-6">
+<!--Dropdown-->
+    <select class="form-control">
+        <option value="">Select a user...</option>
+        <option *ngFor="#user of users"
+                 value="{{ user.id }}">
+                 {{ user.name }}                
+        </option>
+    </select>
+    
     <ul class="list-group posts">
         <li *ngFor="#post of posts" 
             class="list-group-item"
