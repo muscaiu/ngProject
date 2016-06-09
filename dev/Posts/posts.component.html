@@ -6,7 +6,7 @@
             z-index: 999;
             width: 2em;
             margin: auto;">            
-    <spinner [visible]="isLoading"></spinner>
+    <spinner [visible]="postsLoading"></spinner>
 </div>
 
 <!--Left Side-->
@@ -22,6 +22,7 @@
 </div>
 
 <!--Right Side-->
+<!--Posts-->
 <div class="col-md-6 col-sm-6">
     <div *ngIf="currentPost" class="panel panel-default">
         <div class="panel-heading">
@@ -29,9 +30,12 @@
         </div>
         <div class="panel-body">
             <p>{{ currentPost.body }}</p>
-        </div>
-
+        </div>        
+<!--Comments-->
         <div>
+        <hr>
+<!--Spinner-->
+        <spinner [visible]="commentsLoading"></spinner>
             <div class="media"
                  *ngFor = "#comment of currentPost.comments">
                 <div class="media-left">

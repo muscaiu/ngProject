@@ -4,10 +4,6 @@ import {PostService} from './post.service';
 import {SpinnerComponent} from '../CustomHtml/spinner.component';
 
 @Component({
-    selector: 'posts',
-    templateUrl: 'dev/Posts/posts.component.html',
-    providers: [PostService] ,
-    directives: [SpinnerComponent] , 
     styles:[`
         .posts li { cursor: default; }
         .posts li:hover { background: #ecf0f1; } 
@@ -19,12 +15,17 @@ import {SpinnerComponent} from '../CustomHtml/spinner.component';
             color: #2c3e50;
         }
     `],
+    selector: 'posts',
+    templateUrl: 'dev/Posts/posts.component.html',
+    providers: [PostService] ,
+    directives: [SpinnerComponent] , 
 })
 export class PostsComponent implements OnInit {
-    isLoading = true;
+    postsLoading = true;
     posts = [];
     currentPost;
-    
+    commentsLoading;
+
     constructor(private _postService:PostService){   
     }
     
@@ -32,16 +33,19 @@ export class PostsComponent implements OnInit {
         this._postService.getPosts()
             .subscribe(x =>{
               this.posts = x;
-              this.isLoading = false;  
+              this.postsLoading = false;  
             })
     }
     
     select(post){
         this.currentPost = post;
+        this.commentsLoading = true;
 
         this._postService.getComments(post.id)
             .subscribe(comments =>
-                this.currentPost.comments = comments);
+                this.currentPost.comments = comments, 
+                null,
+                () => this.commentsLoading = false);                
     }
 
 
