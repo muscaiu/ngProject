@@ -22,7 +22,7 @@ import {SpinnerComponent} from '../CustomHtml/spinner.component';
 })
 export class PostsComponent implements OnInit {
     isLoading = true;
-    posts: any;
+    posts = [];
     currentPost;
     
     constructor(private _postService:PostService){   
@@ -36,7 +36,13 @@ export class PostsComponent implements OnInit {
             })
     }
     
-    select(postx){
-        this.currentPost = postx;
+    select(post){
+        this.currentPost = post;
+
+        this._postService.getComments(post.id)
+            .subscribe(comments =>
+                this.currentPost.comments = comments);
     }
+
+
 }
