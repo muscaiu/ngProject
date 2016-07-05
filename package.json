@@ -21,7 +21,7 @@
   "devDependencies": {
     "autoprefixer": "^6.2.1",
     "cssnano": "^3.7.0",
-    "concurrently": "^2.1.0",
+    "concurrently": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-ext-replace": "^0.3.0",
     "gulp-imagemin": "^3.0.1",
