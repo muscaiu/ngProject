@@ -19,7 +19,7 @@
     "zone.js": "0.6.12"
   },
   "devDependencies": {
-    "autoprefixer": "^6.2.1",
+    "autoprefixer": "^6.6.0",
     "cssnano": "^3.7.0",
     "concurrently": "^2.1.0",
     "gulp": "^3.9.0",
